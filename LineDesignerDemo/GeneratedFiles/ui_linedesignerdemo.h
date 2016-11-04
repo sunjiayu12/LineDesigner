@@ -96,12 +96,24 @@ public:
     QVBoxLayout *verticalLayout_2;
     QPushButton *pushButton;
     QPushButton *pushButton_4;
+    QGroupBox *groupBox_7;
+    QWidget *horizontalLayoutWidget_9;
+    QHBoxLayout *horizontalLayout_15;
+    QVBoxLayout *verticalLayout_6;
+    QHBoxLayout *horizontalLayout_16;
+    QLabel *label_14;
+    QLineEdit *lineEdit_11;
+    QHBoxLayout *horizontalLayout_17;
+    QLabel *label_22;
+    QLineEdit *lineEdit_12;
+    QPushButton *pushButton_6;
+    QPushButton *pushButton_output;
 
     void setupUi(QMainWindow *LineDesignerDemoClass)
     {
         if (LineDesignerDemoClass->objectName().isEmpty())
             LineDesignerDemoClass->setObjectName(QStringLiteral("LineDesignerDemoClass"));
-        LineDesignerDemoClass->resize(709, 598);
+        LineDesignerDemoClass->resize(709, 684);
         centralWidget = new QWidget(LineDesignerDemoClass);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         groupBox = new QGroupBox(centralWidget);
@@ -255,16 +267,16 @@ public:
 
         groupBox_3 = new QGroupBox(centralWidget);
         groupBox_3->setObjectName(QStringLiteral("groupBox_3"));
-        groupBox_3->setGeometry(QRect(360, 20, 331, 571));
+        groupBox_3->setGeometry(QRect(360, 20, 331, 581));
         textEdit = new QTextEdit(groupBox_3);
         textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(10, 20, 311, 541));
+        textEdit->setGeometry(QRect(10, 20, 311, 551));
         groupBox_4 = new QGroupBox(centralWidget);
         groupBox_4->setObjectName(QStringLiteral("groupBox_4"));
-        groupBox_4->setGeometry(QRect(10, 370, 321, 91));
+        groupBox_4->setGeometry(QRect(10, 370, 321, 61));
         horizontalLayoutWidget_4 = new QWidget(groupBox_4);
         horizontalLayoutWidget_4->setObjectName(QStringLiteral("horizontalLayoutWidget_4"));
-        horizontalLayoutWidget_4->setGeometry(QRect(20, 20, 291, 61));
+        horizontalLayoutWidget_4->setGeometry(QRect(20, 20, 291, 31));
         horizontalLayout_3 = new QHBoxLayout(horizontalLayoutWidget_4);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -292,7 +304,7 @@ public:
 
         groupBox_5 = new QGroupBox(centralWidget);
         groupBox_5->setObjectName(QStringLiteral("groupBox_5"));
-        groupBox_5->setGeometry(QRect(10, 470, 321, 111));
+        groupBox_5->setGeometry(QRect(10, 440, 321, 111));
         horizontalLayoutWidget_8 = new QWidget(groupBox_5);
         horizontalLayoutWidget_8->setObjectName(QStringLiteral("horizontalLayoutWidget_8"));
         horizontalLayoutWidget_8->setGeometry(QRect(20, 20, 291, 80));
@@ -424,22 +436,66 @@ public:
 
         horizontalLayout_11->addLayout(verticalLayout_2);
 
+        groupBox_7 = new QGroupBox(centralWidget);
+        groupBox_7->setObjectName(QStringLiteral("groupBox_7"));
+        groupBox_7->setGeometry(QRect(10, 560, 321, 111));
+        horizontalLayoutWidget_9 = new QWidget(groupBox_7);
+        horizontalLayoutWidget_9->setObjectName(QStringLiteral("horizontalLayoutWidget_9"));
+        horizontalLayoutWidget_9->setGeometry(QRect(20, 20, 291, 80));
+        horizontalLayout_15 = new QHBoxLayout(horizontalLayoutWidget_9);
+        horizontalLayout_15->setSpacing(6);
+        horizontalLayout_15->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout_15->setObjectName(QStringLiteral("horizontalLayout_15"));
+        horizontalLayout_15->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
+        horizontalLayout_16 = new QHBoxLayout();
+        horizontalLayout_16->setSpacing(6);
+        horizontalLayout_16->setObjectName(QStringLiteral("horizontalLayout_16"));
+        label_14 = new QLabel(horizontalLayoutWidget_9);
+        label_14->setObjectName(QStringLiteral("label_14"));
+
+        horizontalLayout_16->addWidget(label_14);
+
+        lineEdit_11 = new QLineEdit(horizontalLayoutWidget_9);
+        lineEdit_11->setObjectName(QStringLiteral("lineEdit_11"));
+
+        horizontalLayout_16->addWidget(lineEdit_11);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_16);
+
+        horizontalLayout_17 = new QHBoxLayout();
+        horizontalLayout_17->setSpacing(6);
+        horizontalLayout_17->setObjectName(QStringLiteral("horizontalLayout_17"));
+        label_22 = new QLabel(horizontalLayoutWidget_9);
+        label_22->setObjectName(QStringLiteral("label_22"));
+
+        horizontalLayout_17->addWidget(label_22);
+
+        lineEdit_12 = new QLineEdit(horizontalLayoutWidget_9);
+        lineEdit_12->setObjectName(QStringLiteral("lineEdit_12"));
+
+        horizontalLayout_17->addWidget(lineEdit_12);
+
+
+        verticalLayout_6->addLayout(horizontalLayout_17);
+
+
+        horizontalLayout_15->addLayout(verticalLayout_6);
+
+        pushButton_6 = new QPushButton(horizontalLayoutWidget_9);
+        pushButton_6->setObjectName(QStringLiteral("pushButton_6"));
+
+        horizontalLayout_15->addWidget(pushButton_6);
+
+        pushButton_output = new QPushButton(centralWidget);
+        pushButton_output->setObjectName(QStringLiteral("pushButton_output"));
+        pushButton_output->setGeometry(QRect(390, 620, 271, 23));
         LineDesignerDemoClass->setCentralWidget(centralWidget);
-        groupBox->raise();
-        groupBox_2->raise();
-        groupBox_3->raise();
-        groupBox_4->raise();
-        groupBox_5->raise();
-        label_4->raise();
-        groupBox_6->raise();
 
         retranslateUi(LineDesignerDemoClass);
-        QObject::connect(okButton, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(buttonClicked()));
-        QObject::connect(pushButton_3, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(pushButton_3_Clicked()));
-        QObject::connect(pushButton, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(pushButton_Clicked()));
-        QObject::connect(pushButton_4, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(pushButton_4_Clicked()));
-        QObject::connect(pushButton_2, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(pushButton_2_Clicked()));
-        QObject::connect(pushButton_5, SIGNAL(clicked()), LineDesignerDemoClass, SLOT(pushButton_5_Clicked()));
 
         QMetaObject::connectSlotsByName(LineDesignerDemoClass);
     } // setupUi
@@ -462,22 +518,27 @@ public:
         label_18->setText(QApplication::translate("LineDesignerDemoClass", "\347\261\263", 0));
         pushButton_3->setText(QApplication::translate("LineDesignerDemoClass", "\350\276\223\345\205\245", 0));
         groupBox_3->setTitle(QApplication::translate("LineDesignerDemoClass", "\347\212\266\346\200\201\346\240\217", 0));
-        groupBox_4->setTitle(QApplication::translate("LineDesignerDemoClass", "\350\247\206\345\234\272\350\247\222", 0));
-        label->setText(QApplication::translate("LineDesignerDemoClass", "\350\247\206\345\234\272\350\247\222", 0));
-        label_2->setText(QApplication::translate("LineDesignerDemoClass", "\302\260", 0));
+        groupBox_4->setTitle(QApplication::translate("LineDesignerDemoClass", "\345\203\217\345\271\205\345\256\275\345\272\246", 0));
+        label->setText(QApplication::translate("LineDesignerDemoClass", "\345\203\217\345\271\205\345\256\275\345\272\246\357\274\232", 0));
+        label_2->setText(QApplication::translate("LineDesignerDemoClass", "\345\216\230\347\261\263", 0));
         pushButton_2->setText(QApplication::translate("LineDesignerDemoClass", "\350\276\223\345\205\245", 0));
         groupBox_5->setTitle(QApplication::translate("LineDesignerDemoClass", "\351\207\215\345\217\240\345\272\246", 0));
         label_4->setText(QApplication::translate("LineDesignerDemoClass", "\350\210\252\345\220\221\351\207\215\345\217\240\345\272\246\357\274\232", 0));
         label_6->setText(QApplication::translate("LineDesignerDemoClass", "%", 0));
         label_7->setText(QApplication::translate("LineDesignerDemoClass", "\346\227\201\345\220\221\351\207\215\345\217\240\345\272\246\357\274\232", 0));
         label_8->setText(QApplication::translate("LineDesignerDemoClass", "%", 0));
-        pushButton_5->setText(QApplication::translate("LineDesignerDemoClass", "\350\267\257\345\276\204\350\247\204\345\210\222!", 0));
+        pushButton_5->setText(QApplication::translate("LineDesignerDemoClass", "\350\276\223\345\205\245", 0));
         groupBox_6->setTitle(QApplication::translate("LineDesignerDemoClass", "\344\272\214\350\200\205\350\276\223\345\205\245\344\270\200\344\270\252", 0));
         label_3->setText(QApplication::translate("LineDesignerDemoClass", "\346\257\224\344\276\213\345\260\272: 1:", 0));
         label_20->setText(QApplication::translate("LineDesignerDemoClass", "\350\210\252\351\253\230H\357\274\232", 0));
         label_19->setText(QApplication::translate("LineDesignerDemoClass", "\347\261\263", 0));
         pushButton->setText(QApplication::translate("LineDesignerDemoClass", "\350\256\241\347\256\227\350\210\252\351\253\230", 0));
         pushButton_4->setText(QApplication::translate("LineDesignerDemoClass", "\350\256\241\347\256\227\346\257\224\344\276\213\345\260\272", 0));
+        groupBox_7->setTitle(QApplication::translate("LineDesignerDemoClass", "\350\265\267\347\202\271\345\235\220\346\240\207", 0));
+        label_14->setText(QApplication::translate("LineDesignerDemoClass", "X\357\274\232", 0));
+        label_22->setText(QApplication::translate("LineDesignerDemoClass", "Y\357\274\232", 0));
+        pushButton_6->setText(QApplication::translate("LineDesignerDemoClass", "\350\276\223\345\205\245", 0));
+        pushButton_output->setText(QApplication::translate("LineDesignerDemoClass", "\350\276\223\345\207\272\351\207\207\346\240\267\345\235\220\346\240\207", 0));
     } // retranslateUi
 
 };

@@ -1,4 +1,5 @@
 #include "linedesignerdemo.h"
+#include <qpoint.h>
 
 LineDesignerDemo::LineDesignerDemo(QWidget *parent)
 	: QMainWindow(parent)
@@ -13,7 +14,17 @@ LineDesignerDemo::LineDesignerDemo(QWidget *parent)
 	angle = 0;
 	pi = 3.141593;
 	l = 0, L = 0;
-	x = 0, y = 0, x_count = 1, y_count = 1, long_dist = 0, short_dist = 0;
+	x = 0, y = 0;
+	start_x = 0, start_y = 0;
+
+	connect(ui.pushButton, SIGNAL(clicked()), this, SLOT(pushButton_Clicked()));
+	connect(ui.pushButton_2, SIGNAL(clicked()), this, SLOT(pushButton_2_Clicked()));
+	connect(ui.pushButton_3, SIGNAL(clicked()), this, SLOT(pushButton_3_Clicked()));
+	connect(ui.pushButton_4, SIGNAL(clicked()), this, SLOT(pushButton_4_Clicked()));
+	connect(ui.pushButton_5, SIGNAL(clicked()), this, SLOT(pushButton_5_Clicked()));
+	connect(ui.pushButton_6, SIGNAL(clicked()), this, SLOT(pushButton_6_Clicked()));
+	connect(ui.okButton, SIGNAL(clicked()), this, SLOT(buttonClicked()));
+	connect(ui.pushButton_output, SIGNAL(clicked()), this, SLOT(pushButton_output_Clicked()));
 }
 
 LineDesignerDemo::~LineDesignerDemo()
@@ -30,9 +41,9 @@ void LineDesignerDemo::buttonClicked()
 	QString y0_str = this->ui.lineEdit_6->text();
 	y0 = y0_str.toDouble(&ok);
 	status += "  Intrinsic parameters:\n";
-	status = status + "  f = " + f_str + "cm\n";
-	status = status + "  x0 = " + x0_str + "cm\n";
-	status = status + "  y0 = " + y0_str + "cm\n";
+	status = status + "  f =\t" + f_str + "cm\n";
+	status = status + "  x0 =\t" + x0_str + "cm\n";
+	status = status + "  y0 =\t" + y0_str + "cm\n";
 	status += "----------\n";
 	this->ui.textEdit->setText(status);
 }
@@ -44,8 +55,8 @@ void LineDesignerDemo::pushButton_3_Clicked()
 	QString Length_str = this->ui.lineEdit_7->text();
 	Length = Length_str.toDouble(&ok);
 	status += "  Area information:\n";
-	status = status + "  Length = " + Length_str + "m\n";
-	status = status + "  Width = " + Width_str + "m\n";
+	status = status + "  Length =\t" + Length_str + "m\n";
+	status = status + "  Width =\t" + Width_str + "m\n";
 	status += "----------\n";
 	this->ui.textEdit->setText(status);
 }
@@ -57,9 +68,10 @@ void LineDesignerDemo::pushButton_Clicked()
 	Height = f*ratio*0.01;
 	sprintf_s(buffer, "%f", Height);
 	QString Height_str = buffer;
-	status = status + "  Height = " + Height_str + "m\n";
+	status = status + "  Height =\t" + Height_str + "m\n";
 	status += "----------\n";
 	this->ui.textEdit->setText(status);
+	this->ui.lineEdit_9->setText(Height_str);
 }
 //计算比例尺
 void LineDesignerDemo::pushButton_4_Clicked()
@@ -69,24 +81,21 @@ void LineDesignerDemo::pushButton_4_Clicked()
 	ratio = 100 * Height / f;
 	sprintf_s(buffer, "%f", ratio);
 	QString ratio_str = buffer;
-	status = status + "  Ratio = 1: " + ratio_str + "\n";
+	status = status + "  Ratio =\t1: " + ratio_str + "\n";
 	status += "----------\n";
 	this->ui.textEdit->setText(status);
+	this->ui.lineEdit->setText(ratio_str);
 }
-//输入视场角，获得像幅和对应地幅
+//输入像幅宽度，输出地幅宽度
 void LineDesignerDemo::pushButton_2_Clicked()
 {
 	QString angle_str = this->ui.lineEdit_2->text();
 	angle = angle_str.toDouble(&ok);
-	angle = angle*pi / 180;
-	l = 2 * f * tan(angle / 2);
-	L = 2 * Height * tan(angle / 2);
-	sprintf_s(buffer, "%f", l);
-	QString l_str = buffer;
-	status = status + "  Image width: " + l_str + "cm\n";
+	L = angle * ratio / 100;
 	sprintf_s(buffer, "%f", L);
 	QString L_str = buffer;
-	status = status + "  Area width: " + L_str + "m\n";
+	status = status + "  Image width:\t" + angle_str + "cm\n";
+	status = status + "  Area width:\t" + L_str + "m\n";
 	status += "----------\n";
 	this->ui.textEdit->setText(status);
 }
@@ -97,34 +106,69 @@ void LineDesignerDemo::pushButton_5_Clicked()
 	x = x_str.toDouble(&ok);
 	QString y_str = this->ui.lineEdit_10->text();
 	y = y_str.toDouble(&ok);
-	int count = 1;
-	long_dist = 0, short_dist = 0;
-	double L_temp = L;
-	count = 1;
-	while (L_temp < Width)
+	status = status + "  Forward overlap:\t" + x_str + "%\n";
+	status = status + "  Side overlap:\t" + y_str + "%\n";
+	status += "----------\n";
+	this->ui.textEdit->setText(status);
+}
+//输入起始坐标
+void LineDesignerDemo::pushButton_6_Clicked()
+{
+	QString start_x_str = this->ui.lineEdit_11->text();
+	start_x = start_x_str.toDouble(&ok);
+	QString start_y_str = this->ui.lineEdit_12->text();
+	start_y = start_y_str.toDouble(&ok);
+	status = status + "  x0 =\t" + start_x_str + "\n";
+	status = status + "  y0 =\t" + start_y_str + "\n";
+	status += "----------\n";
+	this->ui.textEdit->setText(status);
+}
+//输出采样坐标
+void LineDesignerDemo::pushButton_output_Clicked()
+{
+	status = status + "Output points:\n";
+
+	double end_x = start_x + Length;
+	double end_y = start_y + Width;
+	double im, am;
+	am = ceil((end_y - start_y) / ((1 - x / 100)*L));
+	im = ceil((end_x - start_x) / ((1 - y / 100)*L));	//im为一行的拍摄点个数，am为一列的拍摄点个数
+	double xi[1000], yj[1000];	//xi,yj为拍摄点的坐标值
+	xi[0] = start_x;
+	yj[0] = start_y;
+	int i = 0, j = 0;
+	for (; i <= im; i++)
 	{
-		L_temp += (1 - y / 100)*L;
-		count++;
+		xi[i + 1] = xi[i] + (1 - y / 100)*L;
 	}
-	long_dist = Length*count;
-	L_temp = L;
-	count = 1;
-	while (L_temp < Length)
+	for (; j <= am; j++)
 	{
-		L_temp += (1 - y / 100)*L;
-		count++;
+		yj[j + 1] = yj[j] + (1 - x / 100)*L;
 	}
-	short_dist = Width*count;
-	if (long_dist < short_dist)
+	for (i = 0; i <= im; i++)	//输出按航迹飞行的坐标值
 	{
-		status += "  Fly along long side.\n";
-		status += "----------\n";
-		this->ui.textEdit->setText(status);
-	} 
-	else
-	{
-		status += "  Fly along short side.\n";
-		status += "----------\n";
-		this->ui.textEdit->setText(status);
+		if (i % 2 == 0)	//偶数列时，航迹方向为y轴正向
+		{
+			for (j = 0; j <= am; j++)
+			{
+				sprintf_s(buffer, "%f", xi[i]);
+				QString temp_x = buffer;
+				sprintf_s(buffer, "%f", yj[j]);
+				QString temp_y = buffer;
+				status = status + "(" + temp_x + ", " + temp_y + ")\n";
+			}
+		}
+		else    //奇数列时，航迹方向为y轴负方向
+		{
+			for (j = am; j >=0; j--)
+			{
+				sprintf_s(buffer, "%f", xi[i]);
+				QString temp_x = buffer;
+				sprintf_s(buffer, "%f", yj[j]);
+				QString temp_y = buffer;
+				status = status + "(" + temp_x + ", " + temp_y + ")\n";
+			}
+		}
 	}
+	this->ui.textEdit->setText(status);
 }

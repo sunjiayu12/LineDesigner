@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>709</width>
-    <height>598</height>
+    <height>684</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -197,7 +197,7 @@
       <x>360</x>
       <y>20</y>
       <width>331</width>
-      <height>571</height>
+      <height>581</height>
      </rect>
     </property>
     <property name="title">
@@ -209,7 +209,7 @@
        <x>10</x>
        <y>20</y>
        <width>311</width>
-       <height>541</height>
+       <height>551</height>
       </rect>
      </property>
     </widget>
@@ -220,11 +220,11 @@
       <x>10</x>
       <y>370</y>
       <width>321</width>
-      <height>91</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="title">
-     <string>视场角</string>
+     <string>像幅宽度</string>
     </property>
     <widget class="QWidget" name="horizontalLayoutWidget_4">
      <property name="geometry">
@@ -232,14 +232,14 @@
        <x>20</x>
        <y>20</y>
        <width>291</width>
-       <height>61</height>
+       <height>31</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_3">
       <item>
        <widget class="QLabel" name="label">
         <property name="text">
-         <string>视场角</string>
+         <string>像幅宽度：</string>
         </property>
        </widget>
       </item>
@@ -249,7 +249,7 @@
       <item>
        <widget class="QLabel" name="label_2">
         <property name="text">
-         <string>°</string>
+         <string>厘米</string>
         </property>
        </widget>
       </item>
@@ -267,7 +267,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>470</y>
+      <y>440</y>
       <width>321</width>
       <height>111</height>
      </rect>
@@ -334,7 +334,7 @@
       <item>
        <widget class="QPushButton" name="pushButton_5">
         <property name="text">
-         <string>路径规划!</string>
+         <string>输入</string>
         </property>
        </widget>
       </item>
@@ -423,117 +423,90 @@
      </layout>
     </widget>
    </widget>
-   <zorder>groupBox</zorder>
-   <zorder>groupBox_2</zorder>
-   <zorder>groupBox_3</zorder>
-   <zorder>groupBox_4</zorder>
-   <zorder>groupBox_5</zorder>
-   <zorder>label_4</zorder>
-   <zorder>groupBox_6</zorder>
+   <widget class="QGroupBox" name="groupBox_7">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>560</y>
+      <width>321</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="title">
+     <string>起点坐标</string>
+    </property>
+    <widget class="QWidget" name="horizontalLayoutWidget_9">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>291</width>
+       <height>80</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_15">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_6">
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_16">
+          <item>
+           <widget class="QLabel" name="label_14">
+            <property name="text">
+             <string>X：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_11"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_17">
+          <item>
+           <widget class="QLabel" name="label_22">
+            <property name="text">
+             <string>Y：</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="lineEdit_12"/>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QPushButton" name="pushButton_6">
+        <property name="text">
+         <string>输入</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </widget>
+   <widget class="QPushButton" name="pushButton_output">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>620</y>
+      <width>271</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>输出采样坐标</string>
+    </property>
+   </widget>
   </widget>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
   <include location="linedesignerdemo.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>okButton</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>buttonClicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>295</x>
-     <y>78</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>410</x>
-     <y>300</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_3</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>pushButton_3_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>277</x>
-     <y>194</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>395</x>
-     <y>240</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>pushButton_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>271</x>
-     <y>270</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>372</x>
-     <y>270</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_4</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>pushButton_4_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>266</x>
-     <y>306</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>412</x>
-     <y>387</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_2</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>pushButton_2_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>300</x>
-     <y>391</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>393</x>
-     <y>339</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pushButton_5</sender>
-   <signal>clicked()</signal>
-   <receiver>LineDesignerDemoClass</receiver>
-   <slot>pushButton_5_Clicked()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>296</x>
-     <y>500</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>392</x>
-     <y>465</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>buttonClicked()</slot>
   <slot>pushButton_3_Clicked()</slot>
@@ -541,5 +514,6 @@
   <slot>pushButton_4_Clicked()</slot>
   <slot>pushButton_2_Clicked()</slot>
   <slot>pushButton_5_Clicked()</slot>
+  <slot>pushButton_6_Clicked()</slot>
  </slots>
 </ui>

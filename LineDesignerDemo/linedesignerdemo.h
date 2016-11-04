@@ -4,6 +4,8 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_linedesignerdemo.h"
 #include <cmath>
+#include <math.h>
+#include <qpoint.h>
 
 class LineDesignerDemo : public QMainWindow
 {
@@ -19,6 +21,7 @@ protected:
 	double pi;
 	double l, L;
 	double x, y, x_count, y_count, long_dist, short_dist;
+	double start_x, start_y;
 	QString status;
 
 public:
@@ -34,6 +37,8 @@ private slots:
 	void pushButton_4_Clicked();
 	void pushButton_2_Clicked();
 	void pushButton_5_Clicked();
+	void pushButton_6_Clicked();
+	void pushButton_output_Clicked();
 };
 
 #endif // LINEDESIGNERDEMO_H
